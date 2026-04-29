@@ -1,28 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Patagonia</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-family: Arial;
-            text-align: center;
-        }
-        h1 { font-size: 4em; margin-bottom: 20px; }
-        p { font-size: 1.5em; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Patagonia al Día</title>
+<style>
+  /* Asegura que los estilos reflejen el diseño que muestras */
+  body { margin: 0; font-family: Arial, sans-serif; }
+  .top-bar { background: #111; color: #eee; font-size: 14px; display: flex; justify-content: space-between; align-items: center; padding: 5px 20px; }
+  .top-bar .left, .top-bar .right { display: flex; align-items: center; gap: 15px; }
+  .top-bar .left span:nth-child(2) { background:#d25a00; padding:2px 8px; border-radius:4px; font-weight:bold; }
+  
+  .logo-nav { display: flex; align-items: center; background: white; padding: 10px 20px; border-bottom: 3px solid #0f4512; }
+  .logo-nav img { height: 50px; }
+  nav ul { list-style: none; display: flex; gap: 25px; padding: 0; margin: 0 0 0 30px; }
+  nav ul li { cursor: pointer; font-weight: bold; color: #0f4512; }
+
+  .weather-bar { background: #003459; color: #cde; display: flex; align-items: center; padding: 10px 20px; font-size: 14px; }
+  .weather-zone { margin-right: 20px; font-weight: bold; }
+  .weather-hours { display: flex; gap: 15px; }
+  .weather-hour { text-align: center; }
+
+  .urgent-ticker { background: #d25a00; color: white; font-weight: bold; padding: 8px 20px; display: flex; align-items: center; gap: 10px; }
+  .urgent-ticker .label { background: black; padding: 2px 6px; font-size: 12px; }
+
+  main { display: flex; margin: 20px; gap: 20px; }
+  aside { flex-basis: 250px; }
+  .social-links { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .social-links a { color: white; border-radius: 4px; padding: 8px 12px; text-align: center; font-weight: bold; text-decoration: none; }
+  .facebook { background: #3b5998; }
+  .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%,#cc2366 75%,#bc1888 100%); }
+  .youtube { background: #ff0000; }
+
+  .news-section { flex-grow: 1; }
+  .news-main { background: #ddd; padding: 20px; margin-bottom: 15px; position: relative; color: #111; }
+  .news-main .category { background: #13790a; padding: 5px 10px; color: white; font-weight: bold; position: absolute; top: 20px; left: 20px; border-radius: 3px; }
+  .news-main h2 { margin-top: 100px; font-size: 1.8em; }
+  .news-main p { margin-top: 10px; font-size: 0.9em; line-height: 1.3em; }
+  .news-main .meta { font-size: 0.8em; color: #555; margin-top: 10px; }
+  .news-side { display: flex; flex-direction: column; gap: 15px; }
+  .news-item { background: #333; color: white; padding: 10px 15px; font-size: 0.9em; cursor: pointer; border-radius: 5px; }
+  .news-item .category { font-weight: bold; font-size: 0.75em; margin-bottom: 8px; display: inline-block; padding: 2px 5px; border-radius: 3px; }
+  .national { background: #555; }
+  .interview { background: #de7100; }
+  .regional { background: #13790a; }
+</style>
 </head>
 <body>
-    <div>
-        <h1>🌄 Patagonia</h1>
-        <p>¡Pablo Maldonado!</p>
-        <p>Vercel + GitHub OK</p>
+  <div class="top-bar">
+    <div class="left">
+      <span>📍 Miércoles, 29 de Abril de 2026 — Coyhaique, Región de Aysén</span>
+      <span>Otoño</span>
     </div>
+    <div class="right">
+      <span>Facebook</span>
+      <span>Twitter</span>
+      <span>YouTube</span>
+      <button id="toggleTheme">Oscuro</button>
+    </div>
+  </div>
+  <div class="logo-nav">
+    <img src="https://i.ibb.co/mBDMTrV/logo-patagonia-al-dia.png" alt="Patagonia al día logo" />
+    <nav>
+      <ul>
+        <li>INICIO</li>
+        <li>REGIONAL</li>
+        <li>NACIONAL</li>
+        <li>ENTREVISTAS</li>
+        <li>MÚSICA</li>
+        <li>NOSOTROS</li>
+      </ul>
+    </nav>
+  </div>
+  <div class="weather-bar">
+    <div class="weather-zone">REGION DE AYSEN - Coyhaique</div>
+    <div class="weather-hours">
+      <div class="weather-hour"><div>00:00</div><div>🌧 7°c</div></div>
+      <div class="weather-hour"><div>03:00</div><div>🌧 7°c</div></div>
+      <div class="weather-hour"><div>06:00</div><div>☁️ 6°c</div></div>
+      <div class="weather-hour"><div>09:00</div><div>☁️ 6°c</div></div>
+      <div class="weather-hour"><div>12:00</div><div>🌧 8°c</div></div>
+      <div class="weather-hour"><div>15:00</div><div>🌧 8°c</div></div>
+      <div class="weather-hour"><div>18:00</div><div>🌧 6°c</div></div>
+      <div class="weather-hour"><div>21:00</div><div>🌧 6°c</div></div>
+    </div>
+  </div>
+  <div class="urgent-ticker">
+    <div class="label">URGENTE</div>
+    <div>Gobierno Regional de Aysén anuncia inversión histórica en infraestructura vial para la Carretera Austral</div>
+  </div>
+  <main>
+    <aside>
+      <div class="social-links">
+        <a href="#" class="facebook">FACEBOOK</a>
+        <a href="#" class="instagram">INSTAGRAM</a>
+        <a href="#" class="youtube">YOUTUBE</a>
+      </div>
+      <div>
+        <h4>COMERCIALES</h4>
+        <div style="background:#ccc; height: 200px; display:flex; align-items:center; justify-content:center;">Ferretería Don Luis Coyhaique</div>
+      </div>
+    </aside>
+    <section class="news-section">
+      <div class="news-main" style="background: linear-gradient(180deg, #aaa, #555); height: 350px;">
+        <div class="category">REGIONAL</div>
+        <h2>Gobierno Regional de Aysén anuncia inversión histórica en infraestructura vial para la Carretera Austral</h2>
+        <p>La autoridad regional confirmó una inversión de más de 12.000 millones de pesos para pavimentar tramos clave de la ruta entre Coyhaique y Cochrane.</p>
+        <div class="meta">Redacción Patagonia • 29-04-2026</div>
+      </div>
+      <div class="news-side">
+        <div class="news-item national">
+          <div class="category">NACIONAL</div>
+          Senado aprueba proyecto de ley que beneficiará a comunidades rurales de zonas extremas de Chile...
+          <div class="meta">28-04-2026</div>
+        </div>
+        <div class="news-item interview">
+          <div class="category">ENTREVISTAS</div>
+          Entrevista: Alcalde de Coyhaique habla sobre los desafíos del turismo sostenible en la Patagonia
+          <div class="meta">27-04-2026</div>
+        </div>
+        <div class="news-item regional">
+          <div class="category">REGIONAL</div>
+          Comunidades de Puerto Cisnes exigen pavimentación de acceso al poblado tras décadas de espera
+          <div class="meta">26-04-2026</div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    // Toggle modo oscuro sencillo
+    const toggleBtn = document.getElementById('toggleTheme');
+    toggleBtn.addEventListener('click', () => {
+      if(document.body.style.backgroundColor === 'black'){
+        document.body.style.backgroundColor = 'white';
+        document.body.style.color = 'black';
+        toggleBtn.textContent = 'Oscuro';
+      } else {
+        document.body.style.backgroundColor = 'black';
+        document.body.style.color = 'white';
+        toggleBtn.textContent = 'Claro';
+      }
+    });
+  </script>
 </body>
 </html>
